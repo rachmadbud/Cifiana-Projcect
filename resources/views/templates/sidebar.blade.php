@@ -42,6 +42,22 @@
               </span>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="far fa-table fa-2x"></i>
+              <span>
+                Data Penjualan
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fad fa-user-friends fa-2x"></i>
+              <span>
+                Data User
+              </span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
