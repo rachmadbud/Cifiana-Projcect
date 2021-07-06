@@ -1,5 +1,5 @@
 <?php
 
-Route::get('/', function () {
-    return 'admin page';
-})->name('dashboard');
+Route::get('/', 'Admin\KasirController@dashboard')->name('dashboard');
+
+Route::get('/databarang', 'Admin\KasirController@databarang')->name('databarang');

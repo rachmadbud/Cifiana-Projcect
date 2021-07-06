@@ -27,7 +27,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.databarang')}}" class="nav-link">
                 <i class="fad fa-folders fa-2x"></i>
               <span>
                 Data Barang

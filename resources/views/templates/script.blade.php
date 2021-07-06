@@ -9,3 +9,5 @@
 
 <!-- Javascript Font Awesome pro -->
 <script src="https://raw.githack.com/mrbudbud/fontawesome-pro/master/src/js/all.min.js"></script>
+
+@stack('script')
