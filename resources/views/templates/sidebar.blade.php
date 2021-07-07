@@ -19,24 +19,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link d-block">
-                <i class="fas fa-tachometer-alt-slowest fa-2x"></i>
+            <a href="{{ route('admin.dashboard')}}" class="nav-link d-block">
+                <i class="nav-icon fas fa-tachometer-alt-slowest fa-2x"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.databarang')}}" class="nav-link">
-                <i class="fad fa-folders fa-2x"></i>
-              <span>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-folders"></i>
+              <p>
                 Data Barang
-              </span>
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.databarang')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hihat Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.tambah')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data Barang</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="fad fa-layer-minus fa-2x"></i>
+            <a href="{{route('admin.stok')}}" class="nav-link">
+                <i class="nav-icon fad fa-layer-minus"></i>
               <span>
                 Stok Barang
               </span>
@@ -44,7 +59,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="far fa-table fa-2x"></i>
+                <i class="nav-icon far fa-table fa-2x"></i>
               <span>
                 Data Penjualan
               </span>
@@ -52,7 +67,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="fad fa-user-friends fa-2x"></i>
+                <i class=" nav-icon fad fa-user-friends fa-2x"></i>
               <span>
                 Data User
               </span>
