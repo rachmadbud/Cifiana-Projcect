@@ -1,6 +1,6 @@
 @extends('kasir.template')
 
-@section('title', 'Data Barang')
+@section('title', 'Stok Barang')
 
 @section('content')
 
@@ -10,7 +10,7 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Data Barang</h1>
+            <h1>Stok Barang</h1>
             </div>
         </div>
         </div><!-- /.container-fluid -->
@@ -20,37 +20,39 @@
   <section class="content">
 
     <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Data Barang Bangunan</h3>
-        </div>
         <!-- /.card-header -->
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>No</th>
-              <th>Nama Barang</th>
-              <th>Harga</th>
+              <th>Id Barang</th>
+              <th>Stok</th>
+              <th>Keterangan</th>
               <th>aksi</th>
             </tr>
             </thead>
             <tbody>
-              <?php $i = 0 ?>
-              @foreach ($datas as $data)
-              <?php $i++; ?>
+                @if (isset($stok))
+                @foreach ($stok as $item)
+                    
                 <tr>
-                  <td>{{$i}}</td>
-                  <td>{{$data->nama}}</td>
-                  <td>{{$data->harga}}</td>
-                  <td>
-                    <a href="{{route('admin.editdata',$data->id) }}" class="btn btn-warning btnsm">Edit</a>
-                    <a href="{{route('admin.lihatstokbarang', $data->id) }}" class="btn btn-success btnsm">Lihat Stok</a>
-                    <a href="" class="btn btn-danger btnsm">Hapus</a>
-                  </td>
+                    <td>{{$item->id_barang}}</td>
+                    <td>{{$item->stok}}</td>
+                    <td>{{$item->keterangan}}</td>
+                    <td>
+                        <a href="{{$item->id}}" class="btn btn-warning btnsm">Edit Stok</a>
+                        <a href="" class="btn btn-danger btnsm">Hapus</a>
+                    </td>
                 </tr>
-              @endforeach
+                
+                @endforeach
+                @else
             </tbody>
+            
+
           </table>
+          <center><h2 class="text-danger">Stok Kosong, Mungkin Stokm Belum di isi</h2></center>
+            @endif
         </div>
         <!-- /.card-body -->
       </div>

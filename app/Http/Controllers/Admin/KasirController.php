@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Barang;
 use App\Http\Controllers\Controller;
+use App\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 
 class KasirController extends Controller
@@ -78,8 +80,17 @@ class KasirController extends Controller
         return redirect()->route('admin.databarang');
     }
 
-    public function stok()
+    public function editstokbarang(Barang $data)
     {
-        return 'oke';
+        $item = $data->id;
+        
+        $id = Stok::join('barang', 'stok.id_barang', '=', 'barang.id')
+                ->select('stok.id')
+                ->where('stok.id_barang', $item)->first();
+
+        $stok = Stok::find($id);
+
+        return view ('kasir.content.stok', compact('stok'));
+
     }
 }

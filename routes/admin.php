@@ -10,6 +10,8 @@ Route::post('/tabmah', 'Admin\KasirController@postbarang')->name('postbarang');
 Route::get('/editdata/{data}', 'Admin\KasirController@editdata')->name('editdata');
 Route::patch('/editdata/{data}', 'Admin\KasirController@updatedata')->name('updatedata');
 
+Route::get('/lihatstokbarang/{data}', 'Admin\KasirController@editstokbarang')->name('lihatstokbarang');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +19,3 @@ Route::patch('/editdata/{data}', 'Admin\KasirController@updatedata')->name('upda
 |--------------------------------------------------------------------------
 |
 */
-
-Route::get('/stok', 'Admin\KasirController@stok')->name('stok');

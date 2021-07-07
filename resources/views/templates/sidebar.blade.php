@@ -50,7 +50,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.stok')}}" class="nav-link">
+            <a href="" class="nav-link">
                 <i class="nav-icon fad fa-layer-minus"></i>
               <span>
                 Stok Barang

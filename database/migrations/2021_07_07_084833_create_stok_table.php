@@ -17,6 +17,7 @@ class CreateStokTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_barang');
             $table->integer('stok');
+            $table->text('keterangan');
             $table->timestamps();
 
             $table->foreign('id_barang')->references('id')->on('barang')
