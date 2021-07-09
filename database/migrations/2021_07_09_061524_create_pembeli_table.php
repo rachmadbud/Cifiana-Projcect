@@ -14,7 +14,8 @@ class CreatePembeliTable extends Migration
     public function up()
     {
         Schema::create('pembeli', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('nama');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Barang;
 use App\Http\Controllers\Controller;
+use App\Pembeli;
 use App\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -164,11 +165,14 @@ class KasirController extends Controller
     public function struk()
     {
         $datas = Barang::orderBy('id', 'desc')->get();
-        return view('kasir\content\struk', compact('datas'));
+        $karakter = '123456789';
+        $shuffle  = str_shuffle($karakter);
+
+        return view('kasir\content\struk', compact('datas', 'shuffle'));
     }
 
     public function strukpost(Request $request)
     {
-        dd($request);
+        return 'oke';
     }
 }
