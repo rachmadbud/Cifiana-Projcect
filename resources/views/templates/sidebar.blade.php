@@ -50,14 +50,6 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-                <i class="nav-icon fad fa-layer-minus"></i>
-              <span>
-                Stok Barang
-              </span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-table fa-2x"></i>
               <span>
@@ -66,7 +58,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.struk')}}" class="nav-link">
+              <i class="nav-icon fas fa-file-chart-line fa2x"></i>
+              <span>
+                Struk
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
                 <i class=" nav-icon fad fa-user-friends fa-2x"></i>
               <span>
                 Data User

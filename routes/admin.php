@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get('/', 'Admin\KasirController@dashboard')->name('dashboard');
 
 Route::get('/databarang', 'Admin\KasirController@databarang')->name('databarang');
@@ -12,10 +13,17 @@ Route::patch('/editdata/{data}', 'Admin\KasirController@updatedata')->name('upda
 
 Route::get('/lihatstokbarang/{data}', 'Admin\KasirController@editstokbarang')->name('lihatstokbarang');
 
+Route::post('/tambahstok', 'Admin\KasirController@tambahstok')->name('tambahstok');
 
-/*
-|--------------------------------------------------------------------------
-| Ini Route Stok Barang
-|--------------------------------------------------------------------------
-|
-*/
+Route::get('/editstok/{stok}', 'Admin\KasirController@editstok')->name('editstok');
+Route::patch('/editstok/{stok}', 'Admin\KasirController@stokpatch')->name('editstok');
+
+Route::delete('/hapus/{data}', 'Admin\KasirController@hapusbarang')->name('hapusbarang');
+
+Route::delete('/hapusstok/{item}', 'Admin\KasirController@hapusstok')->name('hapusstok');
+
+Route::get('/struk', 'Admin\KasirController@struk')->name('struk');
+Route::post('/struk', 'Admin\KasirController@strukpost')->name('strukpost');
+
+
+

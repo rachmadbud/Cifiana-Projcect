@@ -61,7 +61,7 @@
                     </div>
                     <!-- /.card-footer -->
                 </form>
-              </div>
+            </div>
               <!-- /.card -->
             </div>
         </div>

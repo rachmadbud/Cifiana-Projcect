@@ -43,9 +43,15 @@
                   <td>{{$data->nama}}</td>
                   <td>{{$data->harga}}</td>
                   <td>
-                    <a href="{{route('admin.editdata',$data->id) }}" class="btn btn-warning btnsm">Edit</a>
-                    <a href="{{route('admin.lihatstokbarang', $data->id) }}" class="btn btn-success btnsm">Lihat Stok</a>
-                    <a href="" class="btn btn-danger btnsm">Hapus</a>
+                    <a href="{{route('admin.editdata',$data->id) }}" class="btn btn-warning ">Edit</a>
+                    <a href="{{route('admin.lihatstokbarang', $data->id) }}" class="btn btn-success ">Lihat Stok</a>
+                    {{-- <button href="{{route('admin.hapusbarang', $data) }}" id="delete" class="btn btn-danger btnsm">Hapus</button> --}}
+                    <form action="{{route('admin.hapusbarang', $data->id) }}" method="post" id="delete" class="btn btn-danger btn-sm" >
+                      @csrf
+                      @method("DELETE")
+                      <input type="submit" class="btn btn-danger btn-sm" value="hapus">
+                    </form>
+                    
                   </td>
                 </tr>
               @endforeach
@@ -93,6 +99,28 @@
         });
     });
     </script>
+
+{{-- <script>
+  $('.delete').on('click', function(e){
+    e.preventDefault();
+    var href = $(this).attr('href');
+
+        document.getElementById('deleteForm').action = href;
+        document.getElementById('deleteForm').submit();
+        
+  })
+</script> --}}
+
+<script>
+  $('.delete').click(function(e){
+      e.preventDefault() // Don't post the form, unless confirmed
+      if (confirm('Are you sure?')) {
+          // Post the form
+          $(e.target).closest('form').submit() // Post the surrounding form
+      }
+  });
+</script>
+
 @endpush
 
 
