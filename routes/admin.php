@@ -29,4 +29,6 @@ Route::post('/struk', 'Admin\KasirController@strukpost')->name('strukpost');
 Route::get('/tambahuser', 'Admin\KasirController@tambahuser')->name('tambahuser');
 Route::post('/tambahuser', 'Admin\KasirController@userpost')->name('userpost');
 
+Route::get('/datapenjualan', 'Admin\KasirController@datapenjualan')->name('datapenjualan');
+
 

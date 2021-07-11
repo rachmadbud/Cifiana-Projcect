@@ -237,4 +237,9 @@ class KasirController extends Controller
 
         return $user;
     }
+
+    public function datapenjualan()
+    {
+        return view ('kasir.content.datapenjualan');
+    }
 }
