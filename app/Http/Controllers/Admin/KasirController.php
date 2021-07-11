@@ -238,8 +238,121 @@ class KasirController extends Controller
         return $user;
     }
 
-    public function datapenjualan()
+    public $listMonth = [
+        [
+            'label' => 'Januari',
+            'value' => 1
+        ],
+        [
+            'label' => 'Februari',
+            'value' => 2
+        ],
+        [
+            'label' => 'Maret',
+            'value' => 3
+        ],
+        [
+            'label' => 'April',
+            'value' => 4
+        ],
+        [
+            'label' => 'Mei',
+            'value' => 5
+        ],
+        [
+            'label' => 'Juni',
+            'value' => 6
+        ],
+        [
+            'label' => 'Juli',
+            'value' => 7
+        ],
+        [
+            'label' => 'Agustus',
+            'value' => 8
+        ],
+        [
+            'label' => 'September',
+            'value' => 9
+        ],
+        [
+            'label' => 'Oktober',
+            'value' => 10
+        ],
+        [
+            'label' => 'November',
+            'value' => 11
+        ],
+        [
+            'label' => 'Desember',
+            'value' => 12
+        ]
+    ];
+
+    public function datapenjualan(Request $request)
     {
-        return view ('kasir.content.datapenjualan');
+        $bulan = $request->bulan;
+        $tahun = $request->tahun;
+        
+        $barang = Barang::all();
+        $result = [];
+        foreach ($barang as $b) {
+            $getPenjualan;
+            if ($tahun === NULL && $bulan === null) {
+                $getPenjualan = DetailTransaksi::where('id_barang', $b->id)->sum('jumlahItem');
+            } else {
+                $getPenjualan = DetailTransaksi::where('id_barang', $b->id)
+                    ->whereMonth('created_at', $bulan)
+                    ->whereYear('created_at', $tahun)
+                    ->sum('jumlahItem');
+            }
+
+            if ($getPenjualan > 0) {
+                array_push($result, ['label' => $b['nama'], 'value' => $getPenjualan]);
+            }
+        }
+        usort($result, function($a, $b) {
+            return $a['value'] <= $b['value'];
+        });
+        return view ('kasir.content.datapenjualan')->with(['data' => array_slice($result, 0, 5), 'bulan' => $bulan, 'tahun' => $tahun, 'listMonth' => $this->listMonth]);
     }
+
+    public function emailExist($email)
+    {
+        $cek = User::where('email', '=', $email)->first();
+        if ($cek == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function registerUser(Request $request)
+    {
+        $sukses;
+        $msg;
+        if($this->emailExist($request->input('email'))) {
+            echo 'Email Sudah Terdaftar';
+        } else {
+            $password = $request->password;
+            $request->request->add(['password' => $password]);
+            $insert = User::create($request->all());
+            $insert->assignRole('user');
+            if ($insert) {
+                $msg = 'Berhasil Menambah Admin.';
+                $sukses = true;
+            } else {
+                $msg = 'Gagal Menambah Admin.';
+                $sukses = false;
+            }
+        }
+        var_dump($msg);
+        // return redirect()->route('listAdmin')->with([
+        //     'afterAction' => true,
+        //     'msg' => $msg,
+        //     'sukses' => $sukses
+        // ]);
+    }
+
+
 }

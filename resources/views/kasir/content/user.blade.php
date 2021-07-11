@@ -30,7 +30,7 @@
                 
                 <div class="card-body register-card-body">
               
-                    <form action="{{ route('register') }}" method="post">
+                    <form action="{{ route('admin.addNewUser') }}" method="post">
                         @csrf
                       <div class="input-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="Full name">
@@ -49,7 +49,7 @@
                         </div>
                       </div>
                       <div class="input-group mb-3">
-                        <p type="text" class="form-control rounded-0" name="password" id="passwordOutput">Password</p>
+                        <input type="text" class="form-control rounded-0" name="password" id="passwordOutput" placeholder="password"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-info btn-flat" onclick="onClick()">Generate Password</button>
                         </span>
