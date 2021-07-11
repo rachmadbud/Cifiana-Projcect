@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Pembeli;
 use App\Stok;
 use App\User;
+use App\Transaksi;
+use PDF;
+use App\DetailTransaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -165,16 +168,57 @@ class KasirController extends Controller
 
     public function struk()
     {
-        $datas = Barang::orderBy('id', 'desc')->get();
+        $datas = Barang::leftJoin('stok', 'barang.id', '=', 'stok.id_barang')->get();
+        // $datas = Barang::orderBy('id', 'desc')->get();
         $karakter = '123456789';
         $shuffle  = str_shuffle($karakter);
+        return view('kasir.content.struk', ['datas' => $datas, 'shuffle' => $shuffle]);
+        // return $datas;
+    }
 
-        return view('kasir\content\struk', compact('datas', 'shuffle'));
+    private function cekKodeNota($kode) {
+        $cek = Transaksi::where(['kodeNota' => $kode])->first();
+        if ($cek) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function strukpost(Request $request)
     {
-        return 'oke';
+        $detailTransaksi = $request->barang;
+        if ($this->cekKodeNota($request->nota)) {
+            $pdf = PDF::loadView('kasir.content.cetakStruk', [
+                'kodeNota' => $request->nota,
+                'barang' => $detailTransaksi,
+                'total' => $request->grandTotal
+            ])->setPaper(array(10, -30, 453.6, 356.2));
+            return $pdf->stream('struk.pdf', array('Attachments' =>false))-> header('Content-Type', 'application/pdf');
+        } else {
+            $dataTransaksi = [
+                'kodeNota' => $request->nota,
+                'namaPembeli' => $request->nama,
+                'total' => $request->grandTotal
+            ];
+            Transaksi::create($dataTransaksi);
+            
+            $length = sizeof($detailTransaksi);
+            for ($i=0; $i < $length; $i++) {
+                $stokAkhir = $detailTransaksi[$i]['stok'] - $detailTransaksi[$i]['jumlahItem'];
+                Stok::where('id_barang', $detailTransaksi[$i]['id'])->update(['stok' => $stokAkhir]);
+                $detailTransaksi[$i]['kodeNota'] = $request->nota;
+                DetailTransaksi::create($detailTransaksi[$i]);
+            }
+    
+            $pdf = PDF::loadView('kasir.content.cetakStruk', [
+                'kodeNota' => $request->nota,
+                'barang' => $detailTransaksi,
+                'total' => $request->grandTotal
+            ])->setPaper(array(10, -30, 453.6, 356.2));
+            return $pdf->stream('struk.pdf', array('Attachments' =>false))-> header('Content-Type', 'application/pdf');
+        }
+
     }
 
     public function tambahuser()
