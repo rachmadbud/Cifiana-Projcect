@@ -31,4 +31,6 @@ Route::post('/tambahuser', 'Admin\KasirController@userpost')->name('userpost');
 
 Route::get('/datapenjualan', 'Admin\KasirController@datapenjualan')->name('datapenjualan');
 
+Route::post('/user/register', 'Admin\KasirController@registerUser')->name('addNewUser');
+
 

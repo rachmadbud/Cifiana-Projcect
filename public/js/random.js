@@ -13,7 +13,6 @@ var genratePassword = function(length) {
   
     for(i=0; i<length; i++) {
       var rand_ACS = ALLOWED_CHARACTER_SETS[Math.floor(Math.random() * 3) + 1][2];
-      console.log(rand_ACS);
       genratedPassword += rand_ACS.charAt(Math.floor(Math.random() * rand_ACS.length));
     }
   
@@ -23,8 +22,7 @@ var genratePassword = function(length) {
   
   var onClick = function () {
     var password = genratePassword(20);
-    console.log(password);
     
-    document.getElementById('passwordOutput').innerHTML = password;
+    document.getElementById('passwordOutput').value = password;
   }
    
