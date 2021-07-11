@@ -24,13 +24,6 @@
             <div class="col-lg-6">
                 <div class="card">
                 <div class="card-header border-0">
-<<<<<<< HEAD
-                    <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Sa
-                        les</h3>
-                    <a href="javascript:void(0);">View Report</a>
-                    </div>
-=======
                     <form method="get" class="d-flex justify-content-start">
                         <div class="col-4">
                             <select name="tahun" class="form-control">
@@ -55,7 +48,6 @@
                             <input type="submit" class="btn btn-primary" value="Tampilkan">
                         </div>
                     </form>
->>>>>>> de673b8dbdee7f831a8425d70d97cb97fb34913e
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
