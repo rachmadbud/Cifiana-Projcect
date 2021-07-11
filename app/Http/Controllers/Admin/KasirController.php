@@ -127,7 +127,7 @@ class KasirController extends Controller
 
         $nama = Barang::find($barang);
         
-        return view('kasir\content\editstok', compact('stok', 'nama'));
+        return view('kasir.content.editstok', compact('stok', 'nama'));
     }
 
     public function stokpatch(Request $request, Stok $stok)
@@ -206,7 +206,7 @@ class KasirController extends Controller
             $length = sizeof($detailTransaksi);
             for ($i=0; $i < $length; $i++) {
                 $stokAkhir = $detailTransaksi[$i]['stok'] - $detailTransaksi[$i]['jumlahItem'];
-                Stok::where('id_barang', $detailTransaksi[$i]['id'])->update(['stok' => $stokAkhir]);
+                Stok::where('id_barang', $detailTransaksi[$i]['id_barang'])->update(['stok' => $stokAkhir]);
                 $detailTransaksi[$i]['kodeNota'] = $request->nota;
                 DetailTransaksi::create($detailTransaksi[$i]);
             }

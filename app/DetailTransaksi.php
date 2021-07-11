@@ -9,6 +9,7 @@ class DetailTransaksi extends Model
     protected $table = 'detailTransaksi';
     protected $fillable = [
         'kodeNota',
+        'id_barang',
         'namaBarang',
         'harga',
         'jumlahItem',

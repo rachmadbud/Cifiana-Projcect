@@ -132,7 +132,7 @@
                                     @{{ d.dataBarang.nama }}
                                     <input :name="'barang['+ i +'][namaBarang]'" v-model="d.dataBarang.nama" type="text">
                                     <input :name="'barang['+ i +'][stok]'" v-model="d.stok" type="text">
-                                    <input :name="'barang['+ i +'][id]'" v-model="d.dataBarang.id_barang" type="text">
+                                    <input :name="'barang['+ i +'][id_barang]'" v-model="d.dataBarang.id_barang" type="text">
                                 </td>
                                 <td>
                                     @{{ d.harga }}
