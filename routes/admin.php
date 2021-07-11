@@ -18,7 +18,7 @@ Route::post('/tambahstok', 'Admin\KasirController@tambahstok')->name('tambahstok
 Route::get('/editstok/{stok}', 'Admin\KasirController@editstok')->name('editstok');
 Route::patch('/editstok/{stok}', 'Admin\KasirController@stokpatch')->name('editstok');
 
-Route::delete('/hapus/{data}', 'Admin\KasirController@hapusbarang')->name('hapusbarang');
+Route::get('/hapus/{data}', 'Admin\KasirController@hapusbarang')->name('hapusbarang');
 
 Route::delete('/hapusstok/{item}', 'Admin\KasirController@hapusstok')->name('hapusstok');
 

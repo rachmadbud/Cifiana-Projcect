@@ -45,12 +45,15 @@
                   <td>
                     <a href="{{route('admin.editdata',$data->id) }}" class="btn btn-warning ">Edit</a>
                     <a href="{{route('admin.lihatstokbarang', $data->id) }}" class="btn btn-success ">Lihat Stok</a>
-                    {{-- <button href="{{route('admin.hapusbarang', $data) }}" id="delete" class="btn btn-danger btnsm">Hapus</button> --}}
-                    <form action="{{route('admin.hapusbarang', $data->id) }}" method="post" id="delete" class="btn btn-danger btn-sm" >
+                    {{-- <form action="{{route('admin.hapusbarang', $data->id) }}" method="post" id="delete" class="btn btn-danger btn-sm" >
                       @csrf
-                      @method("DELETE")
-                      <input type="submit" class="btn btn-danger btn-sm" value="hapus">
-                    </form>
+                      @method("DELETE") --}}
+                      <a href="{{route('admin.hapusbarang', $data->id)}}">
+                        <button type="button" onClick="return konfirmasi()" class="btn btn-danger btn-sm">
+                          Hapus
+                        </button>
+                      </a>
+                    {{-- </form> --}}
                     
                   </td>
                 </tr>
@@ -60,6 +63,17 @@
         </div>
         <!-- /.card-body -->
       </div>
+      <script>
+        function konfirmasi () {
+          var pilihan = confirm('Apakah Anda Yakin?')
+          if (pilihan) {
+            return true
+          } else{
+            alert('Proses Dibatalkan')
+            return false
+          }
+        }
+      </script>
 
   </section>
   <!-- /.content -->
