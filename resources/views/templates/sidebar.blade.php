@@ -66,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('admin.tambahuser')}}" class="nav-link">
                 <i class=" nav-icon fad fa-user-friends fa-2x"></i>
               <span>
                 Data User

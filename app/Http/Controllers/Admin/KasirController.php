@@ -6,11 +6,12 @@ use App\Barang;
 use App\Http\Controllers\Controller;
 use App\Pembeli;
 use App\Stok;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 
 class KasirController extends Controller
 {
@@ -174,5 +175,22 @@ class KasirController extends Controller
     public function strukpost(Request $request)
     {
         return 'oke';
+    }
+
+    public function tambahuser()
+    {
+        return view('kasir.content.user');
+    }
+
+    public function userpost(array $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        $user->assignRole('user');
+
+        return $user;
     }
 }
