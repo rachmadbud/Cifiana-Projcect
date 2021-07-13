@@ -27,10 +27,12 @@ Route::post('/struk', 'Admin\KasirController@strukpost')->name('strukpost');
 
 
 Route::get('/tambahuser', 'Admin\KasirController@tambahuser')->name('tambahuser');
-Route::post('/tambahuser', 'Admin\KasirController@userpost')->name('userpost');
+Route::get('/listuser', 'Admin\KasirController@listuser')->name('listuser');
+Route::get('/hapususer/{data}', 'Admin\KasirController@hapususer')->name('hapususer');
 
 Route::get('/datapenjualan', 'Admin\KasirController@datapenjualan')->name('datapenjualan');
 
 Route::post('/user/register', 'Admin\KasirController@registerUser')->name('addNewUser');
+
 
 

@@ -43,8 +43,8 @@ class KasirController extends Controller
         // ]);
 
         $validator = Validator::make($request->all(),[
-            'nama' => "required|min:3|max:20",
-            'harga' => "required|numeric|min:1000|max:999999"
+            'nama' => "required",
+            'harga' => "required|numeric|max:999999"
         ]);
 
         if($validator->fails()){
@@ -346,13 +346,21 @@ class KasirController extends Controller
                 $sukses = false;
             }
         }
-        var_dump($msg);
-        // return redirect()->route('listAdmin')->with([
-        //     'afterAction' => true,
-        //     'msg' => $msg,
-        //     'sukses' => $sukses
-        // ]);
+        toast('User Berhasil Ditambah','success');
+        return redirect()->back();
     }
 
+    public function listuser()
+    {
+        $users = User::orderBy('id', 'desc')->get();
+        return view ('kasir.content.listuser', compact('users'));
+    }
+
+    public function hapususer(User $data)
+    {
+        $data->delete();
+        toast('Data User Berhasil Reset','success');
+        return redirect()->back();
+    }
 
 }

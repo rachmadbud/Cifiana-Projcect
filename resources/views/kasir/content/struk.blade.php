@@ -38,6 +38,7 @@
     </div><!-- /.container-fluid -->
 </section>
 
+
 <form action="" method="POST">
     @csrf
     <section class="content" id="app">
@@ -57,7 +58,7 @@
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                            <b>Nama Pembeli</b> <input type="text" name="nama" class="form-control float-right" id="pembeli">
+                            <b>Nama Pembeli</b> <input type="text" name="nama" class="form-control float-right" id="pembeli" required>
                             </li>
                             <li class="list-group-item">
                                 <b>Kode Nota</b> <input type="text" readonly="readonly" name="nota" class="form-control" id="nota" value="{{$shuffle}}">
@@ -115,51 +116,58 @@
                         </div>
                         <!-- /.card -->
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Nama Barang</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Jumlah Item</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Keterangan</th>
-                            <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(d, i) in datas">
-                                <td>
-                                    @{{ d.dataBarang.nama }}
-                                    <input :name="'barang['+ i +'][namaBarang]'" v-model="d.dataBarang.nama" type="text">
-                                    <input :name="'barang['+ i +'][stok]'" v-model="d.stok" type="text">
-                                    <input :name="'barang['+ i +'][id_barang]'" v-model="d.dataBarang.id_barang" type="text">
-                                </td>
-                                <td>
-                                    @{{ d.harga }}
-                                    <input hidden :name="'barang['+ i +'][harga]'" v-model="d.harga" type="text">
-                                </td>
-                                <td>
-                                    @{{ d.jumlahItem }}
-                                    <input :name="'barang['+ i +'][jumlahItem]'" v-model="d.jumlahItem" type="text">
-                                </td>
-                                <td>
-                                    @{{ d.total }}
-                                    <input :name="'barang['+ i +'][total]'" v-model="d.total" type="text">
-                                </td>
-                                <td>
-                                    @{{ d.keterangan }}
-                                    <input :name="'barang['+ i +'][keterangan]'" v-model="d.keterangan" type="text">
-                                </td>
-                                <td>
-                                    <button type="button" @click="deleteItem(i)" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Grand Total</td>
-                                <td colspan="3">@{{ grandTotal }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Struk</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nama Barang</th>
+                                        <th scope="col">Harga</th>
+                                        <th scope="col">Jumlah Item</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(d, i) in datas">
+                                        <td>
+                                            @{{ d.dataBarang.nama }}
+                                            <input :name="'barang['+ i +'][namaBarang]'" v-model="d.dataBarang.nama" type="text" hidden>
+                                            <input :name="'barang['+ i +'][stok]'" v-model="d.stok" type="text" hidden>
+                                            <input :name="'barang['+ i +'][id_barang]'" v-model="d.dataBarang.id_barang" type="text" hidden>
+                                        </td>
+                                        <td>
+                                            @{{ d.harga }}
+                                            <input hidden :name="'barang['+ i +'][harga]'" v-model="d.harga" type="text">
+                                        </td>
+                                        <td>
+                                            @{{ d.jumlahItem }}
+                                            <input hidden :name="'barang['+ i +'][jumlahItem]'" v-model="d.jumlahItem" type="text">
+                                        </td>
+                                        <td>
+                                            @{{ d.total }}
+                                            <input hidden :name="'barang['+ i +'][total]'" v-model="d.total" type="text">
+                                        </td>
+                                        <td>
+                                            @{{ d.keterangan }}
+                                            <input hidden :name="'barang['+ i +'][keterangan]'" v-model="d.keterangan" type="text">
+                                        </td>
+                                        <td>
+                                            <button type="button" @click="deleteItem(i)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Grand Total</td>
+                                        <td colspan="3">@{{ grandTotal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <input v-model="grandTotal" hidden name="grandTotal" type="text">
                     <button type="submit" :disabled="datas.length < 1" class="btn btn-primary">Simpan Data</button>
                 </div>

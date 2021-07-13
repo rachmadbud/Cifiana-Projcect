@@ -38,7 +38,7 @@
               <li class="nav-item">
                 <a href="{{route('admin.databarang')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Hihat Data</p>
+                  <p>Lihat Data</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -66,12 +66,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.tambahuser')}}" class="nav-link">
-                <i class=" nav-icon fad fa-user-friends fa-2x"></i>
-              <span>
-                Data User
-              </span>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                User
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.listuser')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hihat User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.tambahuser')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Akun User</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

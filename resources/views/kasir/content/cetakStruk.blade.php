@@ -11,12 +11,12 @@
 </style>
 <body>
   <center>
-    <h4>CV BUD-BUD</h4>
+    <h4>Toko Bangunan CECEP</h4>
     <small>Way Kandis</small>
-    <small>08234234234</small>
+    <small>08234234xxx</small>
   </center>
   <br>
-  {{ $kodeNota }}
+  No Nota{{ $kodeNota }}
   <br>
   ============================================== <br>
   {{ date('d-m-Y H:i:s') }} <br>
@@ -24,7 +24,7 @@
   <table>
     <tr>
       <td>
-        Nama
+        Nama Barang
       </td>
       <td>
         Jumlah

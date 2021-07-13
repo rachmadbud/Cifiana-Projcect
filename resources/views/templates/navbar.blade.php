@@ -25,12 +25,17 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">Menu</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="{{route('changePassword')}}" class="dropdown-item">
             <i class="fad fa-key"></i> Ubah Password
           </a>
-          <a href="#" class="dropdown-item">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();"
+          class="dropdown-item">
             <i class="fad fa-sign-out-alt"></i> Keluar
           </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
