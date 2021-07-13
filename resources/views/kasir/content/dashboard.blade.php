@@ -19,7 +19,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Title</h3>
+        <h3 class="card-title"></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -31,11 +31,11 @@
         </div>
       </div>
       <div class="card-body">
-        Start creating your amazing application!
+        Welcome To Dashboard Admin
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
-        Footer
+        @coppyright 2021
       </div>
       <!-- /.card-footer-->
     </div>
