@@ -43,8 +43,8 @@ class KasirController extends Controller
         // ]);
 
         $validator = Validator::make($request->all(),[
-            'nama' => "required",
-            'harga' => "required|numeric|max:999999"
+            'nama' => "required|unique:barang",
+            'harga' => "required|numeric|max:9999999"
         ]);
 
         if($validator->fails()){

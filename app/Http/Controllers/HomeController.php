@@ -28,32 +28,31 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function showChangePasswordForm(){
+    public function showChangePasswordForm()
+    {
         return view('auth.changepassword');
+    }
+
+    public function passwordPatch()
+    {
+        request()->validate([
+            'old_password' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $curentPassword = auth()->user()->password;
+        $old_password = request('old_password');
+
+        if (Hash::check($old_password, $curentPassword)) {
+
+            auth()->user()->update([
+                'password' => bcrypt(request('password')),
+            ]);
+            return back()->with(['success', 'You are change your password']);
         }
-         
-        public function changePassword(Request $request){
-         
-            if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
-            }
-            
-            if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
-            //Current password and new password are same
-            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
-            }
-            if(!(strcmp($request->get('new-password'), $request->get('new-password-confirm'))) == 0){
-                        //New password and confirm password are not same
-                        return redirect()->back()->with("error","New Password should be same as your confirmed password. Please retype new password.");
-            }
-            //Change Password
-            $user = Auth::user();
-            $user->password = bcrypt($request->get('new-password'));
-            $user->save();
-            
-            return redirect()->back()->with("success","Password changed successfully !");
-         
+        else{
+            return back()->withErrors(['old_password' => 'You Have to Fill your old password']);
         }
+    }
         
 }

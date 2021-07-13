@@ -23,5 +23,5 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::get('/changePassword','HomeController@showChangePasswordForm');
-Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+Route::get('/changePassword','HomeController@showChangePasswordForm')->name('changePassword');
+Route::PATCH('/changePassword','HomeController@passwordPatch')->name('passwordPatch');
