@@ -25,9 +25,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            @foreach ($transaksi as $item)
-            <h2>Tanggal: {{$item->created_at}}</h2>
-            @endforeach
+            <h2>Tanggal: {{$tanggalTransaksi->created_at}}</h2>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>

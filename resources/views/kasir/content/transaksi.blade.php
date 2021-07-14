@@ -43,7 +43,7 @@
                   <td>{{$i}}</td>
                   <td>{{$data->kodeNota}}</td>
                   <td>{{$data->namaPembeli}}</td>
-                  <td>{{$data->created_at}}</td>
+                  <td>{{$data->created_at->format('d-M-yy')}}</td>
                   <td>
                     <a href="{{route('admin.detail', $data->kodeNota)}}" class="btn btn-primary ">Datail</a>
                   </td>

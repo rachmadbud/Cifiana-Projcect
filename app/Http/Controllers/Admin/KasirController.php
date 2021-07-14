@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Barang;
-use App\Http\Controllers\Controller;
-use App\Pembeli;
+use PDF;
 use App\Stok;
 use App\User;
+use App\Barang;
+use App\Pembeli;
 use App\Transaksi;
-use PDF;
 use App\DetailTransaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class KasirController extends Controller
 {
@@ -371,15 +371,18 @@ class KasirController extends Controller
 
     public function detail($data)
     {
-        $transaksi = DB::table('transaksi')
+        $tanggalTransaksi = DB::table('transaksi')
                     ->where('kodeNota', $data)
-                    ->get();
+                    ->select('created_at')
+                    ->first();
 
         $kode = DB::table('detailtransaksi')
                 ->where('kodeNota', $data)
                 ->paginate();
+        
+        // return json_encode();
 
-        return view ('kasir.content.detail', compact('kode', 'transaksi'));
+        return view ('kasir.content.detail', compact('kode', 'tanggalTransaksi'));
     }
 
 }

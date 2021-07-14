@@ -1,4 +1,4 @@
-<script src="{{ url('js/vue.js') }}"></script>
+<script src="{{ asset('js/vue.js') }}"></script>
 @extends('kasir.template')
 
 @section('title', 'Tambah Data')
