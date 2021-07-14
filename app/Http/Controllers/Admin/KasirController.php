@@ -363,4 +363,24 @@ class KasirController extends Controller
         return redirect()->back();
     }
 
+    public function transaksi()
+    {
+        $datas = Transaksi::orderBy('id', 'desc')->get();
+        return view('kasir\content\transaksi', compact('datas'));
+    }
+
+    public function detail($data)
+    {
+        $detail = DetailTransaksi::join('transaksi', 'detailtransaksi.kodeNota', '=', 'transaksi.kodeNota')
+                ->select('detailtransaksi.kodeNota')
+                ->where('detailtransaksi.kodeNota', $data)->first();
+
+        $kode = DB::table('detailtransaksi')
+                ->where('kodeNota', $detail)
+                ->paginate();
+
+
+        dd($kode);
+    }
+
 }

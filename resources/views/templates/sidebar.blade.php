@@ -58,6 +58,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('admin.transaksi')}}" class="nav-link">
+                <i class="nav-icon fad fa-file-spreadsheet fa-2x"></i>
+              <span>
+                Detail Transaksi
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('admin.struk')}}" class="nav-link">
               <i class="nav-icon fas fa-file-chart-line fa2x"></i>
               <span>

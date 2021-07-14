@@ -34,5 +34,8 @@ Route::get('/datapenjualan', 'Admin\KasirController@datapenjualan')->name('datap
 
 Route::post('/user/register', 'Admin\KasirController@registerUser')->name('addNewUser');
 
+Route::get('/transaksi', 'Admin\KasirController@transaksi')->name('transaksi');
+Route::get('/detail/{data}', 'Admin\KasirController@detail')->name('detail');
+
 
 
