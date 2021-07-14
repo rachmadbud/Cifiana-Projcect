@@ -30,6 +30,10 @@ Route::PATCH('/changePassword','HomeController@passwordPatch')->name('passwordPa
 Route::get('/barang', 'Karyawan\BarangController@barang')->name('databarang');
 Route::get('/edit/{data}', 'Karyawan\BarangController@edit')->name('edit');
 Route::patch('/edit/{data}', 'Karyawan\BarangController@update')->name('update');
+Route::get('/hapusbarang/{data}', 'Karyawan\BarangController@hapusbarang')->name('hapusbarang');
+Route::get('/tambah', 'Karyawan\BarangController@tambah')->name('tambah');
+Route::post('/tambah', 'Karyawan\BarangController@store')->name('store');
+
 
 Route::get('/lihatstokbarang/{data}', 'Karyawan\StokController@lihatstokbarang')->name('lihatstokbarang');
 Route::post('/tambahstok', 'Karyawan\StokController@tambahstok')->name('tambahstok');

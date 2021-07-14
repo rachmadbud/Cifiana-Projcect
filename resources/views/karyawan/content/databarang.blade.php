@@ -48,7 +48,7 @@
                     {{-- <form action="{{route('admin.hapusbarang', $data->id) }}" method="post" id="delete" class="btn btn-danger btn-sm" >
                       @csrf
                       @method("DELETE") --}}
-                      <a href="{{route('admin.hapusbarang', $data->id)}}">
+                      <a href="{{route('hapusbarang', $data->id)}}">
                         <button type="button" onClick="return konfirmasi()" class="btn btn-danger btn-sm">
                           Hapus
                         </button>

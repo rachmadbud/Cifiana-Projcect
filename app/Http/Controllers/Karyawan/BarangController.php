@@ -21,35 +21,39 @@ class BarangController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
-        //
+        return view('karyawan\content\tambah');
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'nama' => "required|unique:barang",
+            'harga' => "required|numeric|max:9999999"
+        ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+        Barang::create([
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+        ]);
+        
+        toast('Data Berhasil Ditambah','success');
+        return redirect()->back();
     }
 
     /**
@@ -97,8 +101,10 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function hapusbarang(Barang $data)
     {
-        //
+        $data->delete();
+        toast('Data Berhasil Hapus','success');
+        return redirect()->back();
     }
 }

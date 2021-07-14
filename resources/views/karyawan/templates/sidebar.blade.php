@@ -4,7 +4,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         
         <div class="info">
-          <a href="#" class="d-block">Aplikasi TB CECEP</a>
+          <a href="#" class="d-block">Karyawan TB CECEP</a>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.tambah')}}" class="nav-link">
+                <a href="{{ route('tambah')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Data Barang</p>
                 </a>
