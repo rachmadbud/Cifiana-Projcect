@@ -25,28 +25,31 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            @foreach ($transaksi as $item)
+            <h2>Tanggal: {{$item->created_at}}</h2>
+            @endforeach
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>No</th>
-              <th>Kode Nota</th>
-              <th>Nama Pembeli</th>
-              <th>Tanggal</th>
-              <th>aksi</th>
+              <th>Nama Barang</th>
+              <th>Harga</th>
+              <th>Jumlah Item</th>
+              <th>Total</th>
+              <th>Keterangan</th>
             </tr>
             </thead>
             <tbody>
               <?php $i = 0 ?>
-              @foreach ($datas as $data)
+              @foreach ($kode as $data)
               <?php $i++; ?>
                 <tr>
                   <td>{{$i}}</td>
-                  <td>{{$data->kodeNota}}</td>
-                  <td>{{$data->namaPembeli}}</td>
-                  <td>{{$data->created_at}}</td>
-                  <td>
-                    <a href="{{route('admin.detail', $data->kodeNota)}}" class="btn btn-primary ">Datail</a>
-                  </td>
+                  <td>{{$data->namaBarang}}</td>
+                  <td>{{$data->harga}}</td>
+                  <td>{{$data->jumlahItem}}</td>
+                  <td>{{$data->total}}</td>
+                  <td>{{$data->keterangan}}</td>
                 </tr>
               @endforeach
             </tbody>

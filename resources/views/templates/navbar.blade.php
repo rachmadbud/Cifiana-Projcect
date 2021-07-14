@@ -37,7 +37,7 @@
               @csrf
           </form>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer"></a>
         </div>
       </li>
       

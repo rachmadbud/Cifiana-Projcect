@@ -366,21 +366,20 @@ class KasirController extends Controller
     public function transaksi()
     {
         $datas = Transaksi::orderBy('id', 'desc')->get();
-        return view('kasir\content\transaksi', compact('datas'));
+        return view('kasir.content.transaksi', compact('datas'));
     }
 
     public function detail($data)
     {
-        $detail = DetailTransaksi::join('transaksi', 'detailtransaksi.kodeNota', '=', 'transaksi.kodeNota')
-                ->select('detailtransaksi.kodeNota')
-                ->where('detailtransaksi.kodeNota', $data)->first();
+        $transaksi = DB::table('transaksi')
+                    ->where('kodeNota', $data)
+                    ->get();
 
         $kode = DB::table('detailtransaksi')
-                ->where('kodeNota', $detail)
+                ->where('kodeNota', $data)
                 ->paginate();
 
-
-        dd($kode);
+        return view ('kasir.content.detail', compact('kode', 'transaksi'));
     }
 
 }
