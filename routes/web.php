@@ -25,3 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/changePassword','HomeController@showChangePasswordForm')->name('changePassword');
 Route::PATCH('/changePassword','HomeController@passwordPatch')->name('passwordPatch');
+
+
+Route::get('/barang', 'Karyawan\BarangController@barang')->name('databarang');
+Route::get('/edit/{data}', 'Karyawan\BarangController@edit')->name('edit');
+Route::patch('/edit/{data}', 'Karyawan\BarangController@update')->name('update');
+
+Route::get('/lihatstokbarang/{data}', 'Karyawan\StokController@lihatstokbarang')->name('lihatstokbarang');
+Route::post('/tambahstok', 'Karyawan\StokController@tambahstok')->name('tambahstok');
+Route::get('/hapusstok/{item}', 'Karyawan\StokController@hapusstok')->name('hapusstok');
+Route::get('/editstok/{item}', 'Karyawan\StokController@editstok')->name('editstok');

@@ -1,4 +1,4 @@
-@extends('kasir.template')
+@extends('karyawan.default')
 
 @section('title', 'Edit Data')
 
@@ -28,14 +28,14 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{route('admin.updatedata', $data)}}" method="POST" class="form-horizontal">
+                <form action="{{route('update', $data)}}" method="POST" class="form-horizontal">
                     @csrf
                     @method("PATCH")
                     <div class="card-body">
                         <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama Barang</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama" value="{{$data->nama }}" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Barang" required>
+                            <input type="text" name="nama" value="{{$data->nama }}{{ old('nama') }}" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Barang" required>
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

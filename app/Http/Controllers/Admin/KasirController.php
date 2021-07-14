@@ -68,7 +68,7 @@ class KasirController extends Controller
     public function updatedata(Request $request, Barang $data)
     {
         $validator = Validator::make($request->all(),[
-            'nama' => "required|min:3|max:20",
+            'nama' => "required|min:3|",
             'harga' => "required|numeric|min:1000|max:999999"
         ]);
 

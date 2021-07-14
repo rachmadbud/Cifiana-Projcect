@@ -1,9 +1,9 @@
-@include('templates.head')
+@include('karyawan.templates.head')
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
-  @include('templates.navbar')
+  @include('karyawan.templates.navbar')
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -13,7 +13,7 @@
       <span class="brand-text font-weight-light">Toko Bangunan Cecep</span>
     </a>
 
-    @include('templates.sidebar')
+    @include('karyawan.templates.sidebar')
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -34,7 +34,7 @@
 </div>
 <!-- ./wrapper -->
 
-@include('templates.script')
+@include('karyawan.templates.script')
 
 </body>
 </html>
