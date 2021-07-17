@@ -1,4 +1,4 @@
-@extends('kasir.template')
+@extends('karyawan.default')
 
 @section('title', 'Dashboard TB CECEP')
 
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="card-body">
-        Welcome To Dashboard Admin
+        Welcome To Dashboard Page
       </div>
       <!-- /.card-body -->
       <div class="card-footer">

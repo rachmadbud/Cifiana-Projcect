@@ -10,7 +10,7 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Data Barang</h1>
+            <h1>Data Transaksi</h1>
             </div>
         </div>
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
 
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Barang Bangunan</h3>
+          <h3 class="card-title">Data Transaksi</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

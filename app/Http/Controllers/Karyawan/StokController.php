@@ -52,19 +52,36 @@ class StokController extends Controller
         return redirect()->back();
     }
 
-    public function editstok(Barang $data)
+    public function editstok(Stok $item)
     {
-        $item = $data->id;
+        $barang = $item->id_barang;
         
-        $id = Stok::join('barang', 'stok.id_barang', '=', 'barang.id')
-                ->select('stok.id')
-                ->where('stok.id_barang', $item)->first();
+        $nama = Barang::find($barang);
+        // dd($item);
 
-        $namabarang = Barang::find($item);
+        return view ('karyawan.content.editstok', compact('item', 'nama'));
+    }
 
-        $stok = Stok::find($id);
+    public function patchstok(Request $request, Stok $item)
+    {
+        $validator = Validator::make($request->all(),[
+            'stok' => "required|min:1|max:20",
+            'keterangan' => "required|max:50"
+        ]);
 
-        return view ('karyawan.content.editstok', compact('stok', 'item', 'namabarang'));
+        if($validator->fails()){
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+        $item->update([
+            'id_barang' => $request->id_barang,
+            'stok' => $request->stok,
+            'keterangan' => $request->keterangan,
+        ]);
+        // dd($stok);
+
+        toast('Data Berhasil Diedit','success');
+        return redirect()->route('databarang');
     }
 
 }

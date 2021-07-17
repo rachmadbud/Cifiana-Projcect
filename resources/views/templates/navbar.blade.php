@@ -9,7 +9,7 @@
         <a href="{{url('/')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/')}}" class="nav-link">Contact</a>
+        <a href="{{url('/')}}" class="nav-link"></a>
       </li>
     </ul>
 

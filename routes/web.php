@@ -39,3 +39,4 @@ Route::get('/lihatstokbarang/{data}', 'Karyawan\StokController@lihatstokbarang')
 Route::post('/tambahstok', 'Karyawan\StokController@tambahstok')->name('tambahstok');
 Route::get('/hapusstok/{item}', 'Karyawan\StokController@hapusstok')->name('hapusstok');
 Route::get('/editstok/{item}', 'Karyawan\StokController@editstok')->name('editstok');
+Route::patch('/editstok/{item}', 'Karyawan\StokController@patchstok')->name('patchstok');

@@ -10,7 +10,7 @@
         <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Data Barang</h1>
+            <h1>Data Akun User</h1>
             </div>
         </div>
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
 
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Barang Bangunan</h3>
+          <h3 class="card-title">Data Akun User yang Terdaftar</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -29,8 +29,8 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>Nama Barang</th>
-              <th>Harga</th>
+              <th>Username</th>
+              <th>E-Mail</th>
               <th>aksi</th>
             </tr>
             </thead>
@@ -48,7 +48,7 @@
                       @method("DELETE") --}}
                       <a href="{{route('admin.hapususer', $data->id)}}">
                         <button type="button" onClick="return konfirmasi()" class="btn btn-danger btn-sm">
-                          Hapus
+                          Reset
                         </button>
                       </a>
                     {{-- </form> --}}
