@@ -19,7 +19,20 @@
   No Nota{{ $kodeNota }}
   <br>
   ============================================== <br>
-  {{ date('d-m-Y H:i:s') }} <br>
+  <table>
+    <tr>
+      <td>Tanggal</td>
+      <td>: {{ date('d-m-Y H:i:s') }} </td>
+    </tr>
+    <tr>
+      <td>Nama Pembeli</td>
+    <td>: {{$namaPembeli}}</td>
+    </tr>
+    <tr>
+      <td>Alamat</td>
+      <td>: {{$alamat}}</td>
+    </tr>
+  </table>
   ==============================================
   <table>
     <tr>

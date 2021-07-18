@@ -10,6 +10,7 @@ class Transaksi extends Model
     protected $fillable = [
         'kodeNota',
         'namaPembeli',
+        'alamat',
         'total'
     ];
 }

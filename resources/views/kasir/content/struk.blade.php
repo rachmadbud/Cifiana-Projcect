@@ -61,7 +61,10 @@
                             <b>Nama Pembeli</b> <input type="text" name="nama" class="form-control float-right" id="pembeli" required>
                             </li>
                             <li class="list-group-item">
-                                <b>Kode Nota</b> <input type="text" readonly="readonly" name="nota" class="form-control" id="nota" value="{{$shuffle}}">
+                            <b>Alamat</b> <textarea class="form-control" name="alamat" rows="3"></textarea>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Kode Nota</b><input type="text" readonly="readonly" name="nota" class="form-control" id="nota" value="{{$shuffle}}">
                             </li>
                         </ul>
                         </div>
@@ -87,7 +90,6 @@
                                                 <th scope="col">Stok</th>
                                                 <th scope="col">Jumlah Item</th>
                                                 <th scope="col">Total</th>
-                                                <th scope="col">Keterangan</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -107,7 +109,6 @@
                                                     <td><input type="text" class="form-control" v-model="stok" name="stok" readonly></td>
                                                     <td><input type="number" class="form-control" @input="cekStok()" v-model="jumlahItem" name="item" ></td>
                                                     <td><input type="text" class="form-control" v-model="getTotal" name="total" readonly></td>
-                                                    <td><textarea class="form-control" v-model="keterangan" name="keterangan" rows="3" placeholder="Keterangan ..."></textarea></td>
                                                 </tr>
                                             </tbody>
                                         </table>

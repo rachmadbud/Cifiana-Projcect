@@ -51,6 +51,7 @@
 <main role="main" class="container">
   <div class="jumbotron">
     <h1>Toko Bangunan CECEP</h1>
+    <img src="{{asset('image/img2.jpeg')}}" alt="" width="60%">
     <p class="lead">Selamat datang di website admin Toko Bangunan CECEP</p>
     <a class="btn btn-lg btn-primary" href="{{route('login')}}" role="button">Login &raquo;</a>
   </div>

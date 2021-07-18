@@ -191,6 +191,8 @@ class KasirController extends Controller
         if ($this->cekKodeNota($request->nota)) {
             $pdf = PDF::loadView('kasir.content.cetakStruk', [
                 'kodeNota' => $request->nota,
+                'namaPembeli' => $request->nama,
+                'alamat' => $request->alamat,
                 'barang' => $detailTransaksi,
                 'total' => $request->grandTotal
             ])->setPaper(array(10, -30, 453.6, 356.2));
@@ -199,6 +201,7 @@ class KasirController extends Controller
             $dataTransaksi = [
                 'kodeNota' => $request->nota,
                 'namaPembeli' => $request->nama,
+                'alamat' => $request->alamat,
                 'total' => $request->grandTotal
             ];
             Transaksi::create($dataTransaksi);
@@ -213,6 +216,8 @@ class KasirController extends Controller
     
             $pdf = PDF::loadView('kasir.content.cetakStruk', [
                 'kodeNota' => $request->nota,
+                'namaPembeli' => $request->nama,
+                'alamat' => $request->alamat,
                 'barang' => $detailTransaksi,
                 'total' => $request->grandTotal
             ])->setPaper(array(10, -30, 453.6, 356.2));
