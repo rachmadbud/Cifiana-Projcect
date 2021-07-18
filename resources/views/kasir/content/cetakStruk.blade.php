@@ -12,8 +12,8 @@
 <body>
   <center>
     <h4>Toko Bangunan CECEP</h4>
-    <small>Way Kandis</small>
-    <small>08234234xxx</small>
+    <small>Jl. Beringin No. 76 Sribasuki Kota Bumi</small><br>
+    <small>0852-6945-9045</small>
   </center>
   <br>
   No Nota{{ $kodeNota }}
