@@ -9,7 +9,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="https://camo.githubusercontent.com/0cbb7f5c60b17641df1d296a9eb8eef5cc9cdb4c975a399b7d0dde1e0c436354/68747470733a2f2f312e62702e626c6f6773706f742e636f6d2f2d56676545314d6a616e72452f58754646326975756678492f41414141414141414f49452f44505555366f4955704c3470757270415972747168307a4c4c6d75344f46785377434c63424741735948512f733332302f494d472d32303230303531362d5741303030372e6a7067" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('image/img3.jpeg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Toko Bangunan Cecep</span>
     </a>
 
