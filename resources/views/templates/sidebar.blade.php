@@ -66,6 +66,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('admin.prosesapriori')}}" class="nav-link">
+              <i class="nav-icon fad fa-repeat-alt fa-2x"></i>
+              <span>
+                Proses Apriori
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('admin.struk')}}" class="nav-link">
               <i class="nav-icon fas fa-file-chart-line fa2x"></i>
               <span>

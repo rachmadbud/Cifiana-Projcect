@@ -144,7 +144,7 @@ class KasirController extends Controller
         $stok->update([
             'id_barang' => $request->id_barang,
             'stok' => $request->stok,
-            'keterangan' => $request->keterangan    ,
+            'keterangan' => $request->keterangan,
         ]);
 
         toast('Data Berhasil Diedit','success');
