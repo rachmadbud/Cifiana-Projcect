@@ -122,65 +122,217 @@ function frekuensiPasanganItem($data_pasangan, $data)
 
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Diketahui</h3>
+              <h3 class="card-title">Iterasi 1 (Menghitung Frekuensi Awal Itemset:)</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
                   <th>Item</th>
+                  <th>Frekuensi</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    for ($i = 0; $i < count($data_item); $i++) {
-                        echo ("<tr>");
-                        echo ("<td class='text-center'>" . $data_item[$i]->id . "</td>");
-                        echo ("<td>" . $data_item[$i]->item . "</td>");
-                        echo ("</tr>");
-                    }
-                    ?>
+                    <tr>
+                        <?php
+                        $frekuensi_item = frekuensiItem($arr);
+                        foreach ($frekuensi_item as $key => $val) {
+                            echo ("<tr>");
+                            echo ("<td>" . $key . "</td>");
+                            echo ("<td>" . $val . "</td>");
+                            echo ("</tr>");
+                        }
+                        ?>
+                    </tr>
                 </tbody>
               </table>
             </div>
             <!-- /.card-body -->
         </div>
-
-        <br>
-    
-    </section>
-    <!-- /.content -->
-    <!-- Main content -->
-    <section class="content">
-
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Iterasi 1 (Menghitung Frekuensi Awal Itemset:)</h3>
+              <h3 class="card-title">Eliminasi Iterasi 1 (Membuang item yang tidak memenuhi nilai minimum support) sehingga menjadi:</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Item</th>
+                    <th>Item</th>
+                    <th>Frekuensi</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    for ($i = 0; $i < count($data_item); $i++) {
-                        echo ("<tr>");
-                        echo ("<td class='text-center'>" . $data_item[$i]->id . "</td>");
-                        echo ("<td>" . $data_item[$i]->item . "</td>");
-                        echo ("</tr>");
-                    }
-                    ?>
+                    <tr>
+                        <?php
+                            $dataEliminasi = eliminasiItem($frekuensi_item, $minSupport);
+                            foreach ($dataEliminasi as $key => $val) {
+                                echo ("<tr>");
+                                echo ("<td>" . $key . "</td>");
+                                echo ("<td>" . $val . "</td>");
+                                echo ("</tr>");
+                            }
+                        ?>
+                    </tr>
                 </tbody>
               </table>
             </div>
             <!-- /.card-body -->
+        </div>
+    <?php
+    $iterasi = 2;
+    do {
+    ?>
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Iterasi <?php echo $iterasi; ?> (Menghitung Frekuensi Awal Itemset:)</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Frekuensi</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        $pasangan_item = pasanganItem($dataEliminasi);
+                        $frekuensi_item = FrekuensiPasanganItem($pasangan_item, $arr);
+                        foreach ($frekuensi_item as $key => $val) {
+
+                            $ex = explode("_", $key);
+                            $item = "";
+                            $vl = "";
+                            for ($k = 0; $k < count($ex); $k++) {
+                                if ($k !== count($ex) - 1) {
+                                    $item .= "," . $ex[$k];
+                                } else {
+                                    $vl = $ex[$k];
+                                }
+                            }
+                            $aturan_asosiasi[] = array("item" => substr($item, 1), "val" => $vl, "sc" => $val);
+                            echo ("<tr>");
+                            echo ("<td>" . $key . "</td>");
+                            echo ("<td>" . $val . "</td>");
+                            echo ("</tr>");
+                        }
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Eliminasi Iterasi <?php echo $iterasi; ?> (Membuang item yang tidak memenuhi nilai minimum suppor) sehingga menjadi:</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Frekuensi</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        $dataEliminasi = eliminasiItem($frekuensi_item, $minSupport);
+                        foreach ($dataEliminasi as $key => $val) {
+                            echo ("<tr>");
+                            // for ($j = 0; $j < count($frekuensi_item[$i]); $j++) { 
+                            echo ("<td>" . $key . "</td>");
+                            echo ("<td>" . $val . "</td>");
+                            // }
+                            echo ("</tr>");
+                        }
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    <?php $iterasi++;
+    } while ($dataEliminasi == $frekuensi_item)
+    ?>
+
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="">
+                    Karena tidak ada lagi frekuensi yang harus di eliminasi maka iterasi di hentikan.
+                    Hitung Support dan Confident:
+                </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <?php
+                        for ($i = 0; $i < count($aturan_asosiasi); $i++) {
+                            $x = 0;
+                            echo $i + 1 . ". Nilai confident, ";
+                            echo $aturan_asosiasi[$i]["item"] . " => " . $aturan_asosiasi[$i]["val"] . "=";
+                            $ex = explode(",", $aturan_asosiasi[$i]["item"]);
+
+                            for ($l = 0; $l < count($arr); $l++) {
+                                $jum = 0;
+                                for ($k = 0; $k < count($ex); $k++) {
+
+                                    for ($j = 0; $j < count($arr[$l]); $j++) {
+                                        if ($arr[$l][$j] == $ex[$k]) {
+                                            $jum += 1;
+                                        }
+                                    }
+                                }
+                                if (count($ex) == $jum) {
+                                    $x += 1;
+                                }
+                            }
+                            $convident = (floatval($aturan_asosiasi[$i]["sc"]) / floatval($x)) * 100;
+                            $aturan_asosiasi[$i]["c"] = number_format($convident, 2, ".", ",");
+                            echo $aturan_asosiasi[$i]["sc"] . "/" . $x . "=" . number_format(floatval($aturan_asosiasi[$i]["sc"]) / floatval($x), 2, ".", ",") . "=" . number_format($convident, 0, ".", ",") . "%";
+                            echo  "<br>";
+                        }
+                    ?>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                <div class="card-header">
+                    <h3 class="">
+                        Berdasarkan algoritma Apriori, maka aturan asosiasi yang berhasil didapatkan adalah sebagai berikut : 
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+        
+                    <?php
+                        for ($i = 0; $i < count($aturan_asosiasi); $i++) {
+                            $x = 0;
+                            echo $i + 1 . ". Jika " . $aturan_asosiasi[$i]["item"] . " maka " . $aturan_asosiasi[$i]["val"] . "<br>";
+                        }
+                    ?>
+                    
+                </div>
+                <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+        
         </div>
     
     </section>
@@ -205,21 +357,21 @@ function frekuensiPasanganItem($data_pasangan, $data)
     
     <!-- Page specific script -->
     <script>
-    $(function () {
-        $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": []
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
+        $(function () {
+            $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": []
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            });
         });
-    });
     </script>
 
   {{-- <script>

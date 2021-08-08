@@ -219,7 +219,7 @@ function frekuensiPasanganItem($data_pasangan, $data)
                         $iterasi = 2;
                         do {
                         ?>
-                            <b>Iterasi <?php echo $iterasi; ?> (ssMenghitung Frekuensi Awal Itemset:)</b>
+                            <b>Iterasi <?php echo $iterasi; ?> (Menghitung Frekuensi Awal Itemset:)</b>
                             <div class="table-responsive table--no-card m-b-30">
                                 <table class="table table-bordered table-earning">
                                     <thead>
