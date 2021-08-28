@@ -36,7 +36,7 @@ class AprioriController extends Controller
         $data_item = $this->getDataApriori();
         return view('kasir.content.hasil')->with(['d' => $data_item]);
 
-        $minSupport = 3;
+        $minSupport = 2;
         $arr = [];
 
         for ($i = 0; $i < count($data_item); $i++) {

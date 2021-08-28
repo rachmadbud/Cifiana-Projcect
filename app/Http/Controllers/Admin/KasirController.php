@@ -20,13 +20,27 @@ class KasirController extends Controller
 {
     public function dashboard()
     {
+        
         return view ('kasir.content.dashboard');
     }
 
     public function databarang()
     {
         $datas = Barang::orderBy('id', 'desc')->get();
-        return view ('kasir.content.databarang', compact('datas'));
+
+        $detailStok = Barang::join('stok', 'barang.id', '=', 'stok.id')->where('stok.stok', '<=', 10)->get();
+        $totalStok = count($detailStok);
+
+        // return $totalStok;
+
+        return view ('kasir.content.databarang', compact('datas', 'totalStok'));
+    }
+
+    public function infostok()
+    {
+        $detailStok = Barang::join('stok', 'barang.id', '=', 'stok.id')->where('stok.stok', '<=', 10)->get();
+        // return $detailStok;
+        return view('kasir.content.infoStok', compact('detailStok'));
     }
 
     public function tambah()

@@ -6,7 +6,6 @@
 
 @include('sweetalert::alert')
 
-
   <section class="content-header">
       <div class="container-fluid">
       <div class="row mb-2">
@@ -21,27 +20,6 @@
   <!-- Main content -->
   <section class="content">
 
-    <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>{{$totalStok}} item</h3>
-
-              <p>Stok Barang hampir <br> habis !!</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="{{route('admin.infostok')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-    </div><!-- /.container-fluid -->
-
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">Data Barang Bangunan</h3>
@@ -53,31 +31,20 @@
             <tr>
               <th>No</th>
               <th>Nama Barang</th>
-              <th>Harga</th>
+              <th>Stok</th>
               <th>aksi</th>
             </tr>
             </thead>
             <tbody>
               <?php $i = 0 ?>
-              @foreach ($datas as $data)
+                @foreach ($detailStok as $data)
               <?php $i++; ?>
                 <tr>
                   <td>{{$i}}</td>
                   <td>{{$data->nama}}</td>
-                  <td>{{$data->harga}}</td>
+                  <td>{{$data->stok}}</td>
                   <td>
-                    <a href="{{route('admin.editdata',$data->id) }}" class="btn btn-warning ">Edit</a>
-                    <a href="{{route('admin.lihatstokbarang', $data->id) }}" class="btn btn-success ">Lihat Stok</a>
-                    {{-- <form action="{{route('admin.hapusbarang', $data->id) }}" method="post" id="delete" class="btn btn-danger btn-sm" >
-                      @csrf
-                      @method("DELETE") --}}
-                      <a href="{{route('admin.hapusbarang', $data->id)}}">
-                        <button type="button" onClick="return konfirmasi()" class="btn btn-danger btn-sm">
-                          Hapus
-                        </button>
-                      </a>
-                    {{-- </form> --}}
-                    
+                    <a href="{{route('admin.editstok',$data->id) }}" class="btn btn-warning ">Edit</a>
                   </td>
                 </tr>
               @endforeach

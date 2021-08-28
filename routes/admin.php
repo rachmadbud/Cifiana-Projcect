@@ -40,5 +40,7 @@ Route::get('/detail/{data}', 'Admin\KasirController@detail')->name('detail');
 Route::get('prosesApriori', 'Admin\AprioriController@index')->name('prosesapriori');
 Route::post('prosesApriori', 'Admin\AprioriController@button')->name('button');
 
+Route::get('/infostok', 'Admin\KasirController@infostok')->name('infostok');
+
 
 
